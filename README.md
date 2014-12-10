@@ -1,4 +1,4 @@
-qr-login
-========
+QR Login WordPress plugin
+=========================
 
-QR Login WordPress plugin  http://wordpress.org/plugins/credit-tracker/  — Edit
+QR Login WordPress plugin
