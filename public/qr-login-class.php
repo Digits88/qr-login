@@ -46,6 +46,11 @@ class QRLogin
         // Load public-facing style sheet and JavaScript.
         add_action('wp_enqueue_scripts', array($this, 'enqueue_styles'));
         add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
+
+
+        // Append QR code to the login form
+        add_action('login_form', array($this, 'qrl_login_form'));
+        //add_filter('authenticate', array($this, 'cptch_login_check'), 21, 1);
     }
 
     /**
@@ -233,6 +238,22 @@ class QRLogin
     public function enqueue_scripts()
     {
         wp_enqueue_script($this->plugin_slug . '-plugin-script', plugins_url('assets/js/qrl-public.js', __FILE__), array('jquery'), self::VERSION);
+    }
+
+    /**
+     * Register and enqueues public-facing JavaScript files.
+     */
+    public function qrl_login_form()
+    {
+        ob_start();
+
+        $param = 'Po zope';
+        $codeText = 'B/ - ' . $param;
+
+        $qrCode = QRcode::svg($codeText, $outfile = false, $level = QR_ECLEVEL_H, $size = 10, $margin = 1, $saveandprint = false, $back_color = 0xFFFFFF, $fore_color = 0x7B2A10);
+        echo '<pre>';
+        echo $qrCode;
+        echo '</pre>';
     }
 
 }

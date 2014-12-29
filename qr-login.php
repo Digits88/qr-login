@@ -34,7 +34,7 @@ require_once(plugin_dir_path(__FILE__) . 'public/qr-login-functions.php');
 require_once(plugin_dir_path(__FILE__) . 'includes/netlicensing/netlicensing.php');
 require_once(plugin_dir_path(__FILE__) . 'includes/curl/curl.php');
 require_once(plugin_dir_path(__FILE__) . 'includes/curl/curl_response.php');
-
+require_once(plugin_dir_path(__FILE__) . 'includes/phpqrcode/phpqrcode.php');
 
 // Register hooks that are fired when the plugin is activated, deactivated, and uninstalled, respectively.
 register_activation_hook(__FILE__, array('QRLogin', 'activate'));
